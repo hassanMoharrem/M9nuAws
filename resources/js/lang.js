@@ -1,0 +1,70 @@
+const lang =
+    {
+        'm9nuAws' :"صافي",
+        'Create User' :"إنشاء مستخدم",
+        'Click to Add Your Profile Image' :"إضغط لإضافة صورة",
+        'Click to Add Your image' :"إضغط لإضافة صورة",
+        'name' :"الإسم",
+        'name_ar' :"الإسم بالعربي",
+        'number system' :"عدد أنظمة التحلية",
+        'num_system' :"عدد أنظمة التحلية",
+        'email' :"الإيميل",
+        'phone' :"رقم الهاتف",
+        'password' :"كلمة المرور",
+        'image' :"الصورة",
+        'Image' :"الصورة",
+        'action' :"التحكم",
+        'Table' :"جدول العرض",
+        'Yes , Delete' :"نعم ، حذف",
+        'Empty' :"فارغ",
+        'Are you sure to delete ?' :"هل أنت متأكد من عملية الحذف ؟",
+        'Data is null' :"لا يوجد بيانات",
+        'Save changes' :"حفظ التغيرات",
+        'Close' :"إغلاق",
+        'Create' :"إضافة",
+        'Edit a user' :"تعديل المستخدم",
+        'Delete User' :"حذف المستخدم",
+        'Last Date' :"آخر تاريخ",
+        'Next Date' :"التاريخ القادم",
+        'Slider' :"الواجهة",
+        'First Name' :"الإسم الأول",
+        'First Name Arabic' :"الإسم الأول بالعربي",
+        'Last Name Arabic' :"الإسم الأخير بالعربي",
+        'Last Name' :"الإسم الأخير",
+        'Password' :"كلمة السر",
+        'Phone' :"الهاتف",
+        'Whatsapp' :"واتس آب",
+        'Instagram' :"إنستجرام",
+        'Country' :"المدينة",
+        'State' :"الشارع",
+        'Description' :"الوصف",
+        'Description Arabic' :"الوصف بالعربي",
+        'Click to Edit Your Image' :"أنقر لتغير الصورة الشخصية",
+        'Click to Edit Your Background' :"أنقر لتغير صورة الغلاف",
+        'id' :"#",
+        'Name' :"الإسم",
+        'Name Arabic' :"الإسم بالعربي",
+        'Visible' :"التفعيل",
+        'visible' :"التفعيل",
+        'Active' :"فعّال",
+        'inActive' :"غير فعّال",
+        'Actions' :"التحكم",
+        'Menu Page' :"صفحة المنيو",
+        'Update' :"تحديث البيانات",
+        'Delete' :"حذف البيانات",
+        'Add Product' :"إضافة منتج",
+        'Products' :"المنتجات",
+        'Previous Page' :"الصفحة السابقة",
+        'Next Page' :"الصفحة التالية",
+        'Null Product in this Category' :"لايوجد منتجات داخل هذا القسم",
+    };
+
+window.__ = function(key, locale)
+{
+    if (locale === 'ar') {
+        return lang[key] || key;
+    } else {
+        return key;
+    }
+}
+
