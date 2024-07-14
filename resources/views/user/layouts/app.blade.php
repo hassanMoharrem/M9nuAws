@@ -59,7 +59,6 @@
 {{--                                    <a class="dropdown-item py-2 text-muted" href="#"><h6 class="mb-0"><i class="fas fa-folder h6 me-2 text-primary"></i>Terms &amp; Conditions</h6></a>--}}
                                     <a class="dropdown-item py-2 text-muted" href="{{ route('user.logout') }}"><h6 class="mb-0"><i class="fas fa-arrow-circle-left font-16 me-2 ms-0 text-primary"></i>@lang('messages.logout')</h6></a>
                                 </li>
-
                             </ul>
                         </div>
                     @else
