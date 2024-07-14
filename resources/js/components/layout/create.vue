@@ -22,7 +22,7 @@
                                                        class="btn text-muted text-center p-1 mb-0 mx-auto position-relative bg-image-border p-0 bg-sub shadow-sm">
                                                 <img :id="'selected-image'+index" class="w-100 h-100 object-fit-cover" style="display:none;" src="" alt="">
                                             </label>
-                                            <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your ' + index +' Image', this.lang) }}</small>
+                                            <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your image', this.lang) }}</small>
 
                                             <input type="file" @click="indexImage(index)" v-on:change="selectedFile" class="input-file start-0 file-upload-communication-comments-create"
                                                    :id="'file-upload-communication-comments-create'+index"/>

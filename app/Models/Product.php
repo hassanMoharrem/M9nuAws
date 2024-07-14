@@ -16,7 +16,12 @@ class Product extends Model
         if (app()->getLocale() == 'en') {
             return $this->name;
         } else {
-            return $this->name_ar;
+            if ($this->name_ar !== null){
+                return $this->name_ar;
+            }else{
+                return $this->name;
+            }
+
         }
     }
     function getDescriptionLangAttribute()

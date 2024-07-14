@@ -116,10 +116,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="list-unstyled d-flex align-items-center justify-content-center mb-md-5 pb-md-5 mb-4">
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">Home</a></li>
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">Privacy Policy</a></li>
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">Terms and Conditions</a></li>
-                        <li><a href="" class="text-white">Contact Us</a></li>
+                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Home')</a></li>
+                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Privacy Policy')</a></li>
+                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Terms and Conditions')</a></li>
+                        <li><a href="" class="text-white">@lang('messages.Contact Us')</a></li>
                     </ul>
                 </div>
                 <div class="col-12">
@@ -141,7 +141,7 @@
                             </ul>
                         </div>
                         <div class="mt-md-0 mt-4">
-                            <p class="mb-2 text-white text-md-start text-center">©2024 asdasd <span>All rights reserved.</span></p>
+                            <p class="mb-2 text-white text-md-start text-center">©2024 {{ config('app.name') }} <span>@lang('messages.All rights reserved.')</span></p>
                         </div>
                     </div>
                 </div>

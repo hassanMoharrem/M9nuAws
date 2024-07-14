@@ -280,7 +280,7 @@ export default {
             formDataEdit.append('description', this.user_update.description ? this.user_update.description : '');
             formDataEdit.append('description_ar', this.user_update.description_ar ? this.user_update.description_ar : '');
             const config = {
-                headers: {'content-type': 'multipart/form-data','email':this.user_data.email}
+                headers: {'Accept-Language':this.lang ,'content-type': 'multipart/form-data','email':this.user_data.email}
             }
             axios.post(this.user_data_update , formDataEdit, config)
                 .then((res) => {

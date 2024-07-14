@@ -31,11 +31,9 @@
                                     <p class="mb-0" v-if="index1 === 'id'">{{ startIndex + index + 1 }}</p>
                                     <p class="mb-0" v-else-if="index1 === 'visible'">
                                     <span v-if="data[index1] === 1"
-                                          class="text-success rounded px-1 px-md-2 py-1 border-success border font-12"><span
-                                        class="px-2">{{ __('Active',this.lang)}}</span></span>
+                                          class="text-success rounded px-1 px-md-2 py-1 border-success border font-12 d-inline-block w-sm-45px text-center">{{ __('Active',this.lang)}}</span>
                                         <span v-if="data[index1] === 0"
-                                              class="text-danger rounded px-1 px-md-2 py-1 border-danger border font-12"><span
-                                            class="px-1">{{ __('inActive',this.lang)}}</span></span>
+                                              class="text-danger rounded px-1 px-md-2 py-1 border-danger border font-12 d-inline-block w-sm-45px text-center">{{ __('inActive',this.lang)}}</span>
                                     </p>
                                     <p class="mb-0" v-else-if="index1 === 'status'">
                                     <span v-if="data[index1] === 1"
@@ -43,7 +41,7 @@
                                         <span v-if="data[index1] === 0"
                                               class="bg-danger rounded px-2 py-1 text-white fa-sm">{{ __('inActive',this.lang)}}</span>
                                     </p>
-                                    <p class="mb-0 font-12-sm"
+                                    <p class="mb-0 font-12-sm text-truncate w-sm-35px"
                                        v-else-if="index1 !== 'image' && index1 !== 'background' && index1 !=='password'">
                                         {{ data[index1] ? truncateText(data[index1]) : __('Null', this.lang) }}</p>
                                     <p class="mb-0" v-else-if="index1 ==='password'">تم إخفاؤها</p>
@@ -88,7 +86,7 @@
                                                 aria-expanded="false"
                                                 style="background-color: rgb(244, 245, 249) !important; color: black;"
                                                 :aria-controls="'#collapseExample'+data.id">
-                                            <i class="fa-solid fa-plus me-2 font-14" ></i><span class="font-14">{{ __('Add Product',this.lang)}}</span>
+                                            <i class="fa-solid fa-plus me-2 font-14" ></i><span class="font-14">{{ __('Show Products',this.lang)}}</span>
                                         </button>
                                     </div>
 
@@ -223,14 +221,160 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-2 justify-content-center" style="min-height: 150px" :id="'showTable_easy-'+data.id">
+                                    <div class="row mt-3 justify-content-center" style="min-height: 150px" :id="'showTable_easy-'+data.id">
+                                        <div class="col-md-3 d-block d-md-none" v-for="(row , index5) in this.products[data.id]" :key="row.id">
+                                            <div class="bg-white border border-light shadow-sm text-start rounded-10 position-relative mb-3">
+                                                <div class="position-relative d-inline-block rounded-10 w-40 hover_image">
+                                                    <div class="position-absolute rounded-10-left  w-100 h-100 overlay-2"></div>
+                                                    <img :src="row.image ? row.image : '../../assets/site/images/logo.png'" :class="row.image ? 'cover d-inline-block  rounded-10-left border-end border-light w-100' : 'contain d-inline-block  rounded-10-left border-end border-light w-100 p-2'" alt="" height="90px">
+                                                </div>
+                                                <div class="w-60 d-inline-block align-top px-3 py-2 hover_image_60">
+                                                    <h4 class="font-12 text-primary w-95px-sm text-truncate" v-if="this.lang === 'en'">{{ row.name }}</h4>
+                                                    <h4 class="font-12 text-primary w-95px-sm text-truncate" v-else>{{ row.name_ar }}</h4>
+                                                    <p class="mt-1 mb-2 font-12 w-135px-sm text-truncate" v-if="this.lang === 'en'">{{ row.description}}</p>
+                                                    <p class="mt-1 mb-2 font-12 w-135px-sm text-truncate" v-else>{{ row.description_ar}}</p>
+                                                </div>
+                                                <div class="position-absolute end-0 bottom-0 bg-primary m-2 rounded-pill px-2 py-0  ">
+                                                    <span class="font-12 mb-0 text-white">price : {{ row.price}}</span>
+                                                </div>
+                                                <div class="position-absolute top-0 end-0 px-2">
+                                                    <button type="button" class="btn p-0" data-bs-toggle="modal"
+                                                            data-bs-dismiss="modal" :data-bs-target="'#CloseDeleteProduct-'+data.id+row.id"
+                                                            aria-label="Close"><i class="fas fa-times text-primary font-12"></i></button>
+                                                    <button type="button" class="btn p-0 mx-2" data-bs-toggle="modal"
+                                                            @click="editDataProduct(data.id,row.id, index5)"
+                                                            :data-bs-target="'#modalUpdateData-'+data.id+row.id">
+                                                        <i class="fa-solid fa-pencil text-primary font-12"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="modal fade" :id="'CloseDeleteProduct-'+data.id+row.id" tabindex="-1" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="modalCenterTitleDelete">{{ __('Delete',this.lang)}}</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h5 class="text-center mb-0">{{ __('Are you sure to delete ?',this.lang)}}</h5>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-outline-secondary" :id="'CloseDeleteDataProduct1-'+data.id+row.id" data-bs-dismiss="modal" >{{ __('Close',this.lang)}}</button>
+                                                                <button type="button" class="btn btn-danger" @click="DestroyProduct(data.id,row.id,index5)">{{ __('Yes , Delete',this.lang)}}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" :id="'modalUpdateData-'+data.id+row.id" tabindex="-1" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" :id="'modalUpdateDataTitle-'+data.id+row.id">Update User</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body" :id="'updateData_easy1-'+data.id+row.id">
+                                                                <form @submit.prevent="UpdateDataProduct(data.id,row.id)" enctype="multipart/form-data">
+                                                                    <div class="row">
+                                                                        <div class="col-12 text-center">
+                                                                            <div id="file-upload-filename"
+                                                                                 class="text-right text-truncate w-75 name-file-upload position-absolute"></div>
+                                                                            <label :for="'file-upload-communication-comments-update-product'+data.id+row.id"
+                                                                                   class="btn text-muted text-center p-1 mb-0 mx-auto position-relative bg-image-border p-0 bg-sub shadow-sm">
+                                                                                <img :id="'selected-update-image-product'+data.id+row.id" v-if="product_update.image === ''" class="w-100 h-100 object-fit-cover 123" style="display:none;" src="" alt="">
+                                                                                <img :id="'selected-update-image-product'+data.id+row.id" v-else class="w-100 h-100 object-fit-cover" :src="product_update.image" alt="">
+                                                                            </label>
+                                                                            <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your '+index+' Image' , this.lang) }}</small>
+
+                                                                            <input type="file" @click="indexImageProduct(data.id,row.id)" v-on:change="selectedFileEditProduct" class="input-file start-0 file-upload-communication-comments-create"
+                                                                                   :id="'file-upload-communication-comments-update-product'+data.id+row.id"/>
+                                                                            <div class="file-upload-filename-communication-comments-create mx-auto w-100 text-truncate"></div>
+                                                                            <span v-if="flashMsgUpdate['image']"
+                                                                                  class="text-danger font-12 fw-400">{{ flashMsgUpdate['image'][0] }}</span>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <div class="form-group mb-2 text-start">
+                                                                                <label
+                                                                                    class="fw-400 text-label font-12 text-primary">{{ __('Name', this.lang) }}</label>
+                                                                                <input type="text" v-model="product_update.name"
+                                                                                       class="form-control py-2 px-3 shadow-input mt-1 border-transparent bg-sub font-12 text-dark border-primary">
+                                                                                <span v-if="flashMsgUpdate[data.id] ? flashMsgUpdate[data.id].name : false"
+                                                                                      class="text-danger fw-400 font-12">{{ flashMsgUpdate[data.id].name[0] }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <div class="form-group mb-2 text-start">
+                                                                                <label
+                                                                                    class="fw-400 text-label font-12 text-primary">{{ __('Name Arabic', this.lang) }}</label>
+                                                                                <input type="text" v-model="product_update.name_ar"
+                                                                                       class="form-control py-2 px-3 shadow-input mt-1 border-transparent bg-sub font-12 text-dark border-primary">
+                                                                                <span v-if="flashMsgUpdate[data.id] ? flashMsgUpdate[data.id].name_ar : false"
+                                                                                      class="text-danger fw-400 font-12">{{ flashMsgUpdate[data.id].name_ar[0] }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <div class="form-group mb-2 text-start">
+                                                                                <label
+                                                                                    class="fw-400 text-label font-12 text-primary">{{ __('Description', this.lang) }}</label>
+                                                                                <input type="text" v-model="product_update.description"
+                                                                                       class="form-control py-2 px-3 shadow-input mt-1 border-transparent bg-sub font-12 text-dark border-primary">
+                                                                                <span v-if="flashMsgUpdate[data.id] ? flashMsgUpdate[data.id].description : false"
+                                                                                      class="text-danger fw-400 font-12">{{ flashMsgUpdate[data.id].description[0] }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <div class="form-group mb-2 text-start">
+                                                                                <label
+                                                                                    class="fw-400 text-label font-12 text-primary">{{ __('Description Arabic', this.lang) }}</label>
+                                                                                <input type="text" v-model="product_update.description_ar"
+                                                                                       class="form-control py-2 px-3 shadow-input mt-1 border-transparent bg-sub font-12 text-dark border-primary">
+                                                                                <span v-if="flashMsgUpdate[data.id] ? flashMsgUpdate[data.id].description_ar : false"
+                                                                                      class="text-danger fw-400 font-12">{{ flashMsgUpdate[data.id].description_ar[0] }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <div class="form-group mb-2 text-start">
+                                                                                <label
+                                                                                    class="fw-400 text-label font-12 text-primary">{{ __('Price', this.lang) }}</label>
+                                                                                <input type="number" v-model="product_update.price"
+                                                                                       class="form-control py-2 px-3 shadow-input mt-1 border-transparent bg-sub font-12 text-dark border-primary">
+                                                                                <span v-if="flashMsgUpdate[data.id] ? flashMsgUpdate[data.id].price : false"
+                                                                                      class="text-danger fw-400 font-12">{{ flashMsgUpdate[data.id].price[0] }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 mb-2 text-start">
+                                                                            <div>
+                                                                                <label class="form-label mt-2 w-100">visible</label>
+                                                                                <div class="form-check form-switch align-middle ms-0 ps-0">
+                                                                                    <input class="form-check-input ms-0 ps-0" style="font-size: 20px" v-model="product_update.visible" type="checkbox" id="flexSwitchCheckChecked">
+                                                                                </div>
+                                                                            </div>
+                                                                            <span v-if="flashMsgUpdate[data.id] ? flashMsgUpdate[data.id].visible : false"
+                                                                                  class="text-danger fw-400 font-12">{{ flashMsgUpdate[data.id].visible[0] }}</span>
+                                                                        </div>
+
+
+
+                                                                    </div>
+                                                                    <div class="modal-footer px-0 mb-0 pb-0 mt-2">
+                                                                        <button type="button" class="btn btn-outline-secondary" :id="'CloseUpdateData1'+data.id+row.id" data-bs-dismiss="modal">{{ __('Close',this.lang)}}</button>
+                                                                        <button type="submit" class="btn btn-primary">{{ __('Save changes',this.lang)}} <i v-if="loading_update_product" class="fas fa-spinner ms-1 fa-spin text-white"></i></button>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                         <div v-if="loading_product[data.id] === true" class="text-center">
                                             <i class="fas fa-spinner ms-1 fa-spin font-35 text-primary"></i>
                                         </div>
                                         <div class="col-md-12" v-if="products[data.id] && products[data.id].length === 0">
                                             <h4 class="p-3 text-primary mt-4 font-18">{{ __('Null Product in this Category',this.lang)}}</h4>
                                         </div>
-                                        <div class="col-md-12"  v-if="products[data.id] && products[data.id].length !== 0">
+                                        <div class="col-md-12  d-none d-md-block"  v-if="products[data.id] && products[data.id].length !== 0">
                                             <div class="border rounded-3 table-responsive shadow-sm my-3 py-2 px-3">
                                                 <table class="table">
                                                     <thead>
@@ -257,19 +401,19 @@
                                                         <td class="bg-none mb-0 text-start py-3 align-middle ">
                                                             <span class="font-14 font-12-sm">{{index_product + 1}}</span>
                                                         </td>
-                                                        <td class="bg-none mb-0 text-start py-3 align-middle " v-if="this.lang ==='en'">
-                                                            <span class="font-14 font-12-sm">{{ product_loop.name }}</span>
+                                                        <td class="bg-none mb-0 text-start py-3 align-middle  " v-if="this.lang ==='en'">
+                                                            <span class="font-14 font-12-sm">{{ product_loop.name ? product_loop.name : __('Null',this.lang) }}</span>
                                                         </td>
-                                                        <td class="bg-none mb-0 text-start py-3 align-middle " v-if="this.lang ==='ar'">
-                                                            <span class="font-14 font-12-sm">{{ product_loop.name_ar }}</span>
+                                                        <td class="bg-none mb-0 text-start py-3 align-middle  " v-if="this.lang ==='ar'">
+                                                            <span class="font-14 font-12-sm">{{ product_loop.name_ar ? product_loop.name_ar : product_loop.name }}</span>
                                                         </td>
-                                                        <td class="bg-none mb-0 text-start py-3 align-middle " v-if="this.lang ==='en'">
-                                                            <span class="font-14 font-12-sm">{{ product_loop.description }}</span>
+                                                        <td class="bg-none mb-0 text-start py-3 align-middle  " v-if="this.lang ==='en'">
+                                                            <span class="font-14 font-12-sm">{{ product_loop.description ? product_loop.description : __('Null',this.lang) }}</span>
                                                         </td>
-                                                        <td class="bg-none mb-0 text-start py-3 align-middle " v-if="this.lang ==='ar'">
-                                                            <span class="font-14 font-12-sm">{{ product_loop.description_ar }}</span>
+                                                        <td class="bg-none mb-0 text-start py-3 align-middle  " v-if="this.lang ==='ar'">
+                                                            <span class="font-14 font-12-sm">{{ product_loop.description_ar ? product_loop.description_ar : __('Null',this.lang)  }}</span>
                                                         </td>
-                                                        <td class="bg-none mb-0 text-start py-3 align-middle ">
+                                                        <td class="bg-none mb-0 text-start py-3 align-middle  ">
                                                             <span v-if="product_loop.visible === 1"
                                                                   class="text-success rounded px-1 px-md-2 py-1 border-success border font-12"><span
                                                                 class="px-2 font-12-sm">{{ __('Active',this.lang)}}</span></span>
@@ -279,14 +423,14 @@
                                                         </td>
                                                         <td class="bg-none mb-0 text-start py-3 align-middle ">
                                                             <button type="button" class="btn btn-primary px-2" data-bs-toggle="modal"
-                                                                    data-bs-dismiss="modal" :data-bs-target="'#CloseDeleteProduct-'+data.id+product_loop.id"
+                                                                    data-bs-dismiss="modal" :data-bs-target="'#CloseDeleteProduct1-'+data.id+product_loop.id"
                                                                     aria-label="Close"><i class="fas fa-trash-alt text-white"></i></button>
                                                             <button type="button" class="btn btn-primary px-2 mx-0 mx-md-2 mt-2 mt-md-0" data-bs-toggle="modal"
                                                                     @click="editDataProduct(data.id,product_loop.id, index_product)"
-                                                                    :data-bs-target="'#modalUpdateData-'+data.id+product_loop.id">
+                                                                    :data-bs-target="'#modalUpdateData1-'+data.id+product_loop.id">
                                                                 <i class="fa-solid fa-edit text-white"></i>
                                                             </button>
-                                                            <div class="modal fade" :id="'CloseDeleteProduct-'+data.id+product_loop.id" tabindex="-1" style="display: none;" aria-hidden="true">
+                                                            <div class="modal fade" :id="'CloseDeleteProduct1-'+data.id+product_loop.id" tabindex="-1" style="display: none;" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
@@ -303,11 +447,11 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="modal fade" :id="'modalUpdateData-'+data.id+product_loop.id" :key="'modal'+data.id+product_loop.id" tabindex="-1" style="display: none;" aria-hidden="true">
+                                                            <div class="modal fade" :id="'modalUpdateData1-'+data.id+product_loop.id" :key="'modal'+data.id+product_loop.id" tabindex="-1" style="display: none;" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
-                                                                            <h5 class="modal-title" :id="'modalUpdateDataTitle-'+data.id+product_loop.id">Update User</h5>
+                                                                            <h5 class="modal-title" :id="'modalUpdateDataTitle-'+data.id+product_loop.id">{{ __('Update',this.lang)}}</h5>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body" :id="'updateData_easy-'+data.id+product_loop.id">
@@ -321,7 +465,7 @@
                                                                                             <img :id="'selected-update-image-product'+data.id+product_loop.id" v-if="product_update.image === ''" class="w-100 h-100 object-fit-cover 123" style="display:none;" src="" alt="">
                                                                                             <img :id="'selected-update-image-product'+data.id+product_loop.id" v-else class="w-100 h-100 object-fit-cover" :src="product_update.image" alt="">
                                                                                         </label>
-                                                                                        <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your '+index+' Image' , this.lang) }}</small>
+                                                                                        <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your image' , this.lang) }}</small>
 
                                                                                         <input type="file" @click="indexImageProduct(data.id,product_loop.id)" v-on:change="selectedFileEditProduct" class="input-file start-0 file-upload-communication-comments-create"
                                                                                                :id="'file-upload-communication-comments-update-product'+data.id+product_loop.id"/>
@@ -606,6 +750,7 @@ export default {
         },
         async editDataProduct(category_id,product_id, index) {
             document.getElementById('updateData_easy-'+category_id+product_id).style.opacity='0';
+            document.getElementById('updateData_easy1-'+category_id+product_id).style.opacity='0';
             axios.post(this.show_data_product + '/' + product_id,[],{
                 headers:{'Accept-Language': this.lang}
             }).then((res) => {
@@ -613,6 +758,8 @@ export default {
                 this.key_index = index;
                 document.getElementById('updateData_easy-'+category_id+product_id).style.transition='1.2s ease';
                 document.getElementById('updateData_easy-'+category_id+product_id).style.opacity='1';
+                document.getElementById('updateData_easy1-'+category_id+product_id).style.transition='1.2s ease';
+                document.getElementById('updateData_easy1-'+category_id+product_id).style.opacity='1';
             })
                 .catch((err) => {
                     console.log(err);
@@ -638,6 +785,8 @@ export default {
                     this.key_index = null;
                     document.getElementById('CloseUpdateData'+category_id+product_id).click();
                     document.getElementById('updateData_easy-'+category_id+product_id).style.opacity='0';
+                    document.getElementById('CloseUpdateData1'+category_id+product_id).click();
+                    document.getElementById('updateData_easy1-'+category_id+product_id).style.opacity='0';
                     this.loading_update_product = false;
                     if (res.data.status == 200 && res.data.success == true) {
                         this.showSuccessMsg = true;
@@ -655,11 +804,12 @@ export default {
         },
         async DestroyProduct(category_id, product_id, index) {
             const config = {
-                headers: {'category_id':category_id}
+                headers: {'Accept-Language':this.lang ,'category_id':category_id}
             }
             axios.post(this.delete_request_product + '/' + product_id,[],config)
                 .then((res) => {
                     this.products[category_id].splice(index, 1);
+                    document.getElementById('CloseDeleteDataProduct1-' + category_id + product_id).click();
                     document.getElementById('CloseDeleteDataProduct-' + category_id + product_id).click();
                     this.showSuccessMsg = true;
                     this.successMsg = res.data.message;

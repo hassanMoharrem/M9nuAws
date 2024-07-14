@@ -75,9 +75,9 @@ class MenuController extends Controller
         $category_id = \request()->header('_id');
         $validator = Validator::make(request()->all(), [
             'name' => 'required|string|min:3|max:200',
-            'name_ar' => 'required|string|min:3|max:200',
-            'description' => 'required|string|min:3|max:200',
-            'description_ar' => 'required|string|min:3|max:200',
+            'name_ar' => 'nullable|string|min:3|max:200',
+            'description' => 'nullable|string|min:3|max:200',
+            'description_ar' => 'nullable|string|min:3|max:200',
             'image' => 'nullable|image',
             'price' => 'required',
             'visible' => 'nullable',
@@ -122,7 +122,7 @@ class MenuController extends Controller
         $lang = request()->header('Accept-Language') ?? 'en';
         $validator = Validator::make(request()->all(), [
             'name' => 'required|string|min:3|max:200',
-            'name_ar' => 'required|string|min:3|max:200',
+            'name_ar' => 'nullable|string|min:3|max:200',
             'image' => 'nullable|image',
             'visible' => 'nullable',
         ]);
@@ -222,9 +222,9 @@ class MenuController extends Controller
         $lang = request()->header('Accept-Language') ?? 'en';
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3|max:200',
-            'name_ar' => 'required|string|min:3|max:200',
-            'description' => 'required|string|min:3|max:200',
-            'description_ar' => 'required|string|min:3|max:200',
+            'name_ar' => 'nullable|string|min:3|max:200',
+            'description' => 'nullable|string|min:3|max:200',
+            'description_ar' => 'nullable|string|min:3|max:200',
             'image' => 'nullable|image',
             'price' => 'required',
             'visible' => 'nullable',
@@ -270,7 +270,7 @@ class MenuController extends Controller
         $lang = request()->header('Accept-Language') ?? 'en';
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3|max:200',
-            'name_ar' => 'required|string|min:3|max:200',
+            'name_ar' => 'nullable|string|min:3|max:200',
             'image' => 'nullable|image',
             'visible' => 'nullable',
         ]);
