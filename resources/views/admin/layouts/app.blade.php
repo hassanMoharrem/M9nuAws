@@ -89,6 +89,21 @@
         });
     </script>
     <!-- beautify ignore:end -->
+    <style>
+        @media (max-width: 768px) {
+            .font-12-sm{
+                font-size: 11px !important;
+            }
+            .w-h-20{
+                width: 27px;
+                height: 27px;
+                margin-top: 5px;
+            }
+            .lh-8{
+                line-height: 0.8;
+            }
+        }
+    </style>
 
 </head>
 

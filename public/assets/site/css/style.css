@@ -662,7 +662,6 @@ textarea {
     .w-115px-sm{
         width: 135px;
     }
-
     .none-arrow::after{
         display: none !important;
     }
