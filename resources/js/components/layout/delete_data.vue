@@ -1,6 +1,6 @@
 <template>
-    <button type="button" @click="deleteUser(rowId,index)" class="btn btn-primary ms-1 px-2" data-bs-toggle="modal" :data-bs-target="'#modalCenterDelete-'+rowId">
-        <i class="fas fa-trash-alt"></i>
+    <button type="button" @click="deleteUser(rowId,index)" class="btn btn-primary ms-1 px-0 py-0 lh-8 d-flex justify-content-center align-items-center w-h-20" data-bs-toggle="modal" :data-bs-target="'#modalCenterDelete-'+rowId">
+        <i class="fas fa-trash-alt font-12-sm"></i>
     </button>
 
     <div class="modal fade" :id="'modalCenterDelete-'+rowId" tabindex="-1" style="display: none;" aria-hidden="true">

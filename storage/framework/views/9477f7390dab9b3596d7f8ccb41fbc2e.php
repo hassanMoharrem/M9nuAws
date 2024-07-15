@@ -59,7 +59,6 @@
 
                                     <a class="dropdown-item py-2 text-muted" href="<?php echo e(route('user.logout')); ?>"><h6 class="mb-0"><i class="fas fa-arrow-circle-left font-16 me-2 ms-0 text-primary"></i><?php echo app('translator')->get('messages.logout'); ?></h6></a>
                                 </li>
-
                             </ul>
                         </div>
                     <?php else: ?>

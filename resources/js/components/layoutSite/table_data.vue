@@ -31,9 +31,9 @@
                                     <p class="mb-0" v-if="index1 === 'id'">{{ startIndex + index + 1 }}</p>
                                     <p class="mb-0" v-else-if="index1 === 'visible'">
                                     <span v-if="data[index1] === 1"
-                                          class="text-success rounded px-1 px-md-2 py-1 border-success border font-12 d-inline-block w-sm-45px text-center">{{ __('Active',this.lang)}}</span>
+                                          class="text-success rounded px-1 px-md-2 py-1 border-success border font-10 d-inline-block w-sm-35px text-center">{{ __('Active',this.lang)}}</span>
                                         <span v-if="data[index1] === 0"
-                                              class="text-danger rounded px-1 px-md-2 py-1 border-danger border font-12 d-inline-block w-sm-45px text-center">{{ __('inActive',this.lang)}}</span>
+                                              class="text-danger rounded px-1 px-md-2 py-1 border-danger border font-10 d-inline-block w-sm-35px text-center">{{ __('inActive',this.lang)}}</span>
                                     </p>
                                     <p class="mb-0" v-else-if="index1 === 'status'">
                                     <span v-if="data[index1] === 1"
@@ -59,10 +59,12 @@
                                                      :key="'delete-data'+index" :deleteRequest="deleteRequest"
                                                      @data-deleted="handleDataDeleted"></delete_data>
                                     </div>
-                                    <update v-if="updateRequest && showData" :__="__" :lang="lang" :updateRowId="data.id"
-                                            :indexUpdate="index" :key="'edit-data'+index" :showData="showData"
-                                            :updateRequest="updateRequest" :data_update="data_update"
-                                            @data-updated="handleDataUpdated"></update>
+                                    <div  class="d-inline-block mb-md-0">
+                                        <update v-if="updateRequest && showData" :__="__" :lang="lang" :updateRowId="data.id"
+                                                :indexUpdate="index" :key="'edit-data'+index" :showData="showData"
+                                                :updateRequest="updateRequest" :data_update="data_update"
+                                                @data-updated="handleDataUpdated"></update>
+                                    </div>
                                     <div class="d-block d-md-none" :id="'heading'+data.id">
                                         <button class="accordion-button btn collapsed-btn bg-none rounded-3 border-0 px-2 py-2 w-100 w-md-75 none-arrow"
                                                 type="button"
@@ -72,7 +74,7 @@
                                                 aria-expanded="false"
                                                 style="background-color: rgb(244, 245, 249) !important; color: black;"
                                                 :aria-controls="'#collapseExample'+data.id">
-                                            <i class="fa-solid fa-plus me-1 font-12 align-middle" ></i><span class="font-12 align-middle">{{ __('Products',this.lang)}}</span>
+                                            <i class="fa-solid fa-plus me-1 font-12-sm align-middle" ></i><span class="font-12-sm align-middle">{{ __('Products',this.lang)}}</span>
                                         </button>
                                     </div>
                                 </td>

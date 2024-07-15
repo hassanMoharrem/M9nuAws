@@ -1,6 +1,6 @@
 <template>
-    <button type="button" class="btn btn-primary px-2 ms-1" data-bs-toggle="modal" @click="editData(this.updateRowId, this.indexUpdate)" :data-bs-target="'#modalUpdateData-'+updateRowId">
-        <i class="fas fa-edit align-items-center"></i>
+    <button type="button" class="btn btn-primary ms-1 px-0 py-0 lh-8 d-flex justify-content-center align-items-center w-h-20" data-bs-toggle="modal" @click="editData(this.updateRowId, this.indexUpdate)" :data-bs-target="'#modalUpdateData-'+updateRowId">
+        <i class="fas fa-edit align-items-center font-12-sm"></i>
     </button>
     <div class="modal fade" :id="'modalUpdateData-'+updateRowId" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

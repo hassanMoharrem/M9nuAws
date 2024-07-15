@@ -2,8 +2,8 @@
 @section('content')
     <main>
         <!--    Start Slider -->
-        <section class=" min-vh-100 bg-image">
-            <div class="container h-100vh">
+        <section class="vh-100 vh-75-sm bg-image">
+            <div class="container h-100">
                 @foreach($slider as $row)
                     <div class="position-relative h-100">
                         <div class="row align-items-center h-100">
@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-md-6">
                                 <figure class="text-end">
-                                    <img src="{{ $row->image }}" width="100%" height="500" class="text-end contain" data-aos="zoom-in" data-aos-duration="1500"
+                                    <img src="{{ $row->image }}" width="100%" height="400" class="text-end contain" data-aos="zoom-in" data-aos-duration="1500"
                                          alt="">
                                 </figure>
                             </div>
@@ -25,7 +25,7 @@
                 @endforeach
 
             </div>
-            <div class="custom-shape-divider-bottom-1657716909">
+            <div class="custom-shape-divider-bottom-1657716909 d-none d-md-block">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
                           class="shape-fill"></path>
