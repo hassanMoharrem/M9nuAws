@@ -5,10 +5,10 @@
                 <h5 class="card-header">{{ __('Table', this.lang) }}</h5>
             </div>
             <div class="col-md-6 mb-3 my-md-auto text-end">
-                <create :__="__" :data="user" :createRequest="create_request" :lang="this.lang" @data-created="handleDataCreated"></create>
+                <create :__="__" :check_lang="true"  :data="user" :createRequest="create_request" :lang="this.lang" @data-created="handleDataCreated"></create>
             </div>
         </div>
-        <table_data :show_sub="show_sub" :data_update="user" :dataRequest="users_data" :lang="this.lang" :__="__" :initial_data="all_data" :showData="show_data" :updateRequest="edit_request" :deleteRequest="delete_request"></table_data>
+        <table_data :check_lang="true" :show_sub="show_sub" :data_update="user" :dataRequest="users_data" :lang="this.lang" :__="__" :initial_data="all_data" :showData="show_data" :updateRequest="edit_request" :deleteRequest="delete_request"></table_data>
     </div>
 </template>
 

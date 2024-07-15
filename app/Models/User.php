@@ -85,11 +85,11 @@ class User extends Authenticatable
     }
     public function getImageAttribute($value)
     {
-        return $value ? url('storage/' . $value) : '';
+        return $value ? url('storage/' . $value) : asset('assets/site/images/logo.png');
     }
     public function getBackgroundAttribute($value)
     {
-        return $value ? url('storage/' . $value) : '';
+        return $value ? url('storage/' . $value) : asset('assets/site/images/background.jpg');
     }
     public function categories(){
         return $this->hasMany(Category::class);

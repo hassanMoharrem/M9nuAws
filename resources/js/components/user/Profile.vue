@@ -15,7 +15,7 @@
                                         <img id="selected-update-image" v-if="user_update.image" class="w-100 h-100 object-fit-contain" :src="user_update.image" alt="">
                                         <img id="selected-update-image" v-else class="w-100 h-100 object-fit-contain" style="display:none;" src="" alt="">
                                     </label>
-                                    <small class="text-label d-block py-2 font-12 fw-light">{{ __('Click to Edit Your Image',this.lang)}}</small>
+                                    <small class="text-label d-block py-2 font-12 fw-light">{{ __('Your Logo',this.lang)}}</small>
                                     <input type="file" v-on:change="selectedFileEdit" class="input-file start-0 file-upload-communication-comments-create"
                                            id="file-upload-communication-comments-edite"/>
                                     <div class="file-upload-filename-communication-comments-create mx-auto w-100 text-truncate"></div>
@@ -31,7 +31,7 @@
                                         <img id="selected-update-background" v-if="user_update.background" class="w-100 h-100 object-fit-contain p-1" :src="user_update.background" alt="">
                                         <img id="selected-update-background" v-else class="w-100 h-100 object-fit-contain p-1" style="display:none;" src="" alt="">
                                     </label>
-                                    <small class="text-label d-block py-2 font-12 fw-light">{{ __('Click to Edit Your Background',this.lang)}}</small>
+                                    <small class="text-label d-block py-2 font-12 fw-light">{{ __('Your WallPaper',this.lang)}}</small>
                                     <input type="file" v-on:change="selectedFileEditBackground" class="input-file start-0 file-upload-communication-comments-create"
                                            id="file-upload-communication-comments-edite-background"/>
                                     <div class="file-upload-filename-communication-comments-create mx-auto w-100 text-truncate"></div>

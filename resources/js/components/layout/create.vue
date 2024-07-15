@@ -1,6 +1,6 @@
 <template>
     <button type="button" class="btn btn-primary px-2" data-bs-toggle="modal" data-bs-target="#modalCreateData">
-        <i class="fas fa-plus align-items-center me-1"></i> <span class=" align-items-center">{{ __('Create',this.lang)}}</span>
+        <i class="fas fa-plus align-items-center me-1 font-14"></i> <span class=" align-items-center font-14">{{ __('Create',this.lang)}}</span>
     </button>
     <div class="modal fade" id="modalCreateData" tabindex="-1" aria-labelledby="modalCreateDataTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -22,7 +22,7 @@
                                                        class="btn text-muted text-center p-1 mb-0 mx-auto position-relative bg-image-border p-0 bg-sub shadow-sm">
                                                 <img :id="'selected-image'+index" class="w-100 h-100 object-fit-cover" style="display:none;" src="" alt="">
                                             </label>
-                                            <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your image', this.lang) }}</small>
+                                            <small class="text-muted d-block py-2 font-12 fw-light">{{ this.check_lang && index === 'image' ? __('Your Logo', this.lang)  : this.check_lang && index === 'background' ? __('Your WallPaper', this.lang):  __('Click to Add Image', this.lang) }}</small>
 
                                             <input type="file" @click="indexImage(index)" v-on:change="selectedFile" class="input-file start-0 file-upload-communication-comments-create"
                                                    :id="'file-upload-communication-comments-create'+index"/>
@@ -115,6 +115,7 @@
             'data',
             'lang',
             'sub_id',
+            'check_lang',
             '__',
         ],
         data() {

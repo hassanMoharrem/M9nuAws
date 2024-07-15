@@ -107,8 +107,8 @@
                                         <div class="col-md-6 my-auto text-end">
                                             <button type="button" class="btn btn-primary px-2" @click="changeId(data.id)" data-bs-toggle="modal"
                                                     :data-bs-target="'#modalCreateDataProduct'+data.id">
-                                                <i class="fas fa-plus align-items-center me-1"></i> <span
-                                                class=" align-items-center">{{ __('Create',this.lang)}}</span>
+                                                <i class="fas fa-plus align-items-center me-1 font-14 text-white"></i> <span
+                                                class=" align-items-center font-14 text-white">{{ __('Create',this.lang)}}</span>
                                             </button>
                                         </div>
                                     </div>
@@ -136,7 +136,7 @@
                                                                             alt="">
                                                                         </label>
                                                                         <small
-                                                                            class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your image',this.lang)}}</small>
+                                                                            class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Image',this.lang)}}</small>
                                                                         <input type="file" v-on:change="selectedFileProduct"
                                                                                class="input-file start-0 file-upload-communication-comments-create"
                                                                                :id="'file-upload-communication-comments-createimageProduct'+data.id">
@@ -270,7 +270,7 @@
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" :id="'modalUpdateDataTitle-'+data.id+row.id">Update User</h5>
+                                                                <h5 class="modal-title" :id="'modalUpdateDataTitle-'+data.id+row.id">{{ __('Update',this.lang)}}</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body" :id="'updateData_easy1-'+data.id+row.id">
@@ -284,7 +284,7 @@
                                                                                 <img :id="'selected-update-image-product'+data.id+row.id" v-if="product_update.image === ''" class="w-100 h-100 object-fit-cover 123" style="display:none;" src="" alt="">
                                                                                 <img :id="'selected-update-image-product'+data.id+row.id" v-else class="w-100 h-100 object-fit-cover" :src="product_update.image" alt="">
                                                                             </label>
-                                                                            <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your '+index+' Image' , this.lang) }}</small>
+                                                                            <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Image' , this.lang) }}</small>
 
                                                                             <input type="file" @click="indexImageProduct(data.id,row.id)" v-on:change="selectedFileEditProduct" class="input-file start-0 file-upload-communication-comments-create"
                                                                                    :id="'file-upload-communication-comments-update-product'+data.id+row.id"/>
@@ -344,7 +344,7 @@
                                                                         </div>
                                                                         <div class="col-6 mb-2 text-start">
                                                                             <div>
-                                                                                <label class="form-label mt-2 w-100">visible</label>
+                                                                                <label class="form-label mt-2 w-100 font-12 text-primary">{{ __('visible',this.lang)}}</label>
                                                                                 <div class="form-check form-switch align-middle ms-0 ps-0">
                                                                                     <input class="form-check-input ms-0 ps-0" style="font-size: 20px" v-model="product_update.visible" type="checkbox" id="flexSwitchCheckChecked">
                                                                                 </div>
@@ -424,10 +424,10 @@
                                                                 class="px-2 font-12-sm">{{ __('inActive',this.lang)}}</span></span>
                                                         </td>
                                                         <td class="bg-none mb-0 text-start py-3 align-middle ">
-                                                            <button type="button" class="btn btn-primary px-2" data-bs-toggle="modal"
+                                                            <button type="button" class="btn btn-primary px-2 font-12" data-bs-toggle="modal"
                                                                     data-bs-dismiss="modal" :data-bs-target="'#CloseDeleteProduct1-'+data.id+product_loop.id"
                                                                     aria-label="Close"><i class="fas fa-trash-alt text-white"></i></button>
-                                                            <button type="button" class="btn btn-primary px-2 mx-0 mx-md-2 mt-2 mt-md-0" data-bs-toggle="modal"
+                                                            <button type="button" class="btn btn-primary px-2 font-12 mx-0 mx-md-2 mt-2 mt-md-0" data-bs-toggle="modal"
                                                                     @click="editDataProduct(data.id,product_loop.id, index_product)"
                                                                     :data-bs-target="'#modalUpdateData1-'+data.id+product_loop.id">
                                                                 <i class="fa-solid fa-edit text-white"></i>
@@ -467,7 +467,7 @@
                                                                                             <img :id="'selected-update-image-product'+data.id+product_loop.id" v-if="product_update.image === ''" class="w-100 h-100 object-fit-cover 123" style="display:none;" src="" alt="">
                                                                                             <img :id="'selected-update-image-product'+data.id+product_loop.id" v-else class="w-100 h-100 object-fit-cover" :src="product_update.image" alt="">
                                                                                         </label>
-                                                                                        <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your image' , this.lang) }}</small>
+                                                                                        <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Image' , this.lang) }}</small>
 
                                                                                         <input type="file" @click="indexImageProduct(data.id,product_loop.id)" v-on:change="selectedFileEditProduct" class="input-file start-0 file-upload-communication-comments-create"
                                                                                                :id="'file-upload-communication-comments-update-product'+data.id+product_loop.id"/>

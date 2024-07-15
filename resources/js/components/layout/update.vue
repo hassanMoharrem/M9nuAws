@@ -21,7 +21,7 @@
                                             <img :id="'selected-update-image'+index+updateRowId" v-if="form_update[index] === ''" class="w-100 h-100 object-fit-cover 123" style="display:none;" src="" alt="">
                                             <img :id="'selected-update-image'+index+updateRowId" v-else class="w-100 h-100 object-fit-cover" :src="form_update[index]" alt="">
                                         </label>
-                                        <small class="text-muted d-block py-2 font-12 fw-light">{{ __('Click to Add Your image' , this.lang) }}</small>
+                                        <small class="text-muted d-block py-2 font-12 fw-light">{{ this.check_lang && index === 'image' ? __('Your Logo', this.lang)  : this.check_lang && index === 'background' ? __('Your WallPaper', this.lang):  __('Click to Add Image', this.lang) }}</small>
 
                                     <input type="file" @click="indexImage(index)" v-on:change="selectedFileEdit" class="input-file start-0 file-upload-communication-comments-create"
                                                :id="'file-upload-communication-comments-create'+index+updateRowId"/>
@@ -98,6 +98,7 @@ export default{
             'data_update',
             'lang',
             '__',
+            'check_lang',
             'updateRowId',
             'indexUpdate',
         ],

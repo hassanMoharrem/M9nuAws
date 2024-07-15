@@ -31,7 +31,7 @@
                         <i class="fas fa-eye"></i>
                     </a>
                     <delete_data v-if="deleteRequest" :__="__" :lang="lang" :rowId="data.id" :index="index" :key="'delete-data'+index" :deleteRequest="deleteRequest" @data-deleted="handleDataDeleted"></delete_data>
-                    <update v-if="updateRequest && showData" :__="__" :lang="lang" :updateRowId="data.id" :indexUpdate="index" :key="'edit-data'+index" :showData="showData" :updateRequest="updateRequest" :data_update="data_update" @data-updated="handleDataUpdated"></update>
+                    <update v-if="updateRequest && showData" :__="__" :lang="lang" :check_lang="check_lang" :updateRowId="data.id" :indexUpdate="index" :key="'edit-data'+index" :showData="showData" :updateRequest="updateRequest" :data_update="data_update" @data-updated="handleDataUpdated"></update>
                 </td>
             </tr>
             <tr v-if="this.all_data.length === 0">
@@ -65,6 +65,7 @@ export default {
         'deleteRequest',
         'lang',
         'show_sub',
+        'check_lang',
         '__',
         'initial_data',
         'sub_id',

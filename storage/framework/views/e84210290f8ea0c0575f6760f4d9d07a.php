@@ -2,13 +2,13 @@
     <section>
         <div class="text-center">
             <figure class="text-center pt-2">
-                <img src="<?php echo e($user->image); ?>" width="200" height="200" class="border border-3 border-primary text-end contain p-2 rounded-circle position-relative z-index-9999 bg-white mx-auto" data-aos="zoom-in" data-aos-duration="1500"
+                <img src="<?php echo e($user->image); ?>" width="200" height="200" class="border border-3 border-primary text-end contain p-2 rounded-circle position-relative bg-white mx-auto" data-aos="zoom-in" data-aos-duration="1500"
                      alt="">
             </figure>
         </div>
         <div class="align-content-center mt-n-80">
             <figure>
-                <img src="<?php echo e(asset($user->background)); ?>" class="w-100 cover" height="500px" alt="">
+                <img src="<?php echo e(asset($user->background)); ?>" class="w-100 cover bg-white" height="500px" alt="">
             </figure>
         </div>
         <div class="container">
