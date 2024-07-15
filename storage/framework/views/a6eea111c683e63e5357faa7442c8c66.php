@@ -55,12 +55,12 @@ endif;
 unset($__errorArgs, $__bag); ?>
                             <div class="mb-4 form-group">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control ps-5 font-12" id="floatingInputGroup1 " value="<?php echo e(old('email')); ?>" name="email"  placeholder="<?php echo app('translator')->get('messages.Email'); ?>">
-                                    <label for="floatingInputGroup1" class="text-muted"><?php echo app('translator')->get('messages.Email'); ?></label>
+                                    <input type="text" class="form-control ps-5 font-12" id="floatingInputGroup1 " value="<?php echo e(old('f_name')); ?>" name="f_name"  placeholder="<?php echo app('translator')->get('messages.f_name'); ?>">
+                                    <label for="floatingInputGroup1" class="text-muted"><?php echo app('translator')->get('messages.f_name'); ?></label>
                                     <div class="form-floating-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                                     </div>
-                                    <?php $__errorArgs = ['email'];
+                                    <?php $__errorArgs = ['f_name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

@@ -54,7 +54,7 @@ class UserController extends BaseController
         $validator = Validator::make(request()->all(), [
             'company_name' => 'required|string|min:3|max:100',
             'company_name_ar' => 'required|string|min:3|max:100',
-            'f_name' => 'required|string|min:3|max:50',
+            'f_name' => 'required|unique:users,f_name|string|min:3|max:50',
             'l_name' => 'required|string|min:3|max:50',
             'f_name_ar' => 'required|string|min:3|max:50',
             'l_name_ar' => 'required|string|min:3|max:50',
@@ -152,7 +152,7 @@ class UserController extends BaseController
         $validator = Validator::make($request->all(), [
             'company_name' => 'required|string|min:3|max:100',
             'company_name_ar' => 'required|string|min:3|max:100',
-            'f_name' => 'required|string|min:3|max:50',
+            'f_name' => 'required|string|min:3|max:50|unique:users,f_name,' . $id,
             'l_name' => 'required|string|min:3|max:50',
             'f_name_ar' => 'required|string|min:3|max:50',
             'l_name_ar' => 'required|string|min:3|max:50',

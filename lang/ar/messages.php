@@ -32,6 +32,7 @@
         'I forgot my password' =>"نسيت كلمة المرور",
         'Sign in to start your session' =>"قم بتسجيل الدخول لبدء جلستك",
         'Menu' =>"المنيو",
+        'f_name' =>"الإسم",
         'Click to Add Your Image' =>"إنقر لإضافة صورة",
         'In three simple steps, you will have the quickest,easiest, and most cost- effective solution' =>"في ثلاث خطوات بسيطة، سيكون لديك الحل الأسرع والأسهل والأكثر فعالية من حيث التكلفة",
         // Add more translations as needed

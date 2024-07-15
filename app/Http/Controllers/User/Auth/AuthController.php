@@ -21,11 +21,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
          $request->validate([
-            'email' => 'required|email|exists:users,email|max:100',
+            'f_name' => 'required|string|exists:users,f_name|max:100',
             'password' => 'required|min:6|max:50',
         ]);
 
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('web')->attempt(['f_name' => $request->f_name, 'password' => $request->password])) {
             return redirect()->route('site');
         } else {
             $errors = new MessageBag();

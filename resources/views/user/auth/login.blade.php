@@ -48,12 +48,12 @@
                             @enderror
                             <div class="mb-4 form-group">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control ps-5 font-12" id="floatingInputGroup1 " value="{{ old('email') }}" name="email"  placeholder="@lang('messages.Email')">
-                                    <label for="floatingInputGroup1" class="text-muted">@lang('messages.Email')</label>
+                                    <input type="text" class="form-control ps-5 font-12" id="floatingInputGroup1 " value="{{ old('f_name') }}" name="f_name"  placeholder="@lang('messages.f_name')">
+                                    <label for="floatingInputGroup1" class="text-muted">@lang('messages.f_name')</label>
                                     <div class="form-floating-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                                     </div>
-                                    @error('email')
+                                    @error('f_name')
                                     <div class="text-danger font-12 mb-2" style="font-size: 12px">{{ $message }}</div>
                                     @enderror
                                 </div>

@@ -158,7 +158,7 @@ return [
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',
     'uuid' => 'The :attribute field must be a valid UUID.',
-
+    'f_name' =>'first name',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -173,6 +173,10 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+        ],
+        'f_name' => [
+            'exists' => 'The selected first name is invalid.',
+            'required' => 'The first name is required.',
         ],
     ],
 
