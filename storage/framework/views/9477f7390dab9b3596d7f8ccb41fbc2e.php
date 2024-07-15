@@ -55,7 +55,7 @@
                             <ul class="dropdown-menu border-0 shadow fade text-start" aria-labelledby="dropdownMenuLinkUser">
                                 <li class="px-2 pt-2 pb-2 border-bottom text-muted"><a class="dropdown-item text-muted" href="<?php echo e(route('user.profile.index')); ?>"><h6 class="p-2 bg-primary rounded-circle me-2 d-inline-block"><i class="fas fa-user p-1 text-white"></i></h6><?php echo app('translator')->get('messages.My Profile'); ?></a></li>
                                 <li class="p-2">
-                                    <a class="dropdown-item py-2 text-muted" href="<?php echo e(route('user.menu.index')); ?>"><h6 class="mb-0"><i class="fas fa-list h6 me-2 text-primary"></i><?php echo app('translator')->get('messages.Menu'); ?></h6></a>
+                                    <a class="dropdown-item py-2 text-muted" href="<?php echo e(route('user.menu.index')); ?>"><h6 class="mb-0"><i class="fas fa-list font-16 me-2 text-primary"></i><?php echo app('translator')->get('messages.Menu'); ?></h6></a>
 
                                     <a class="dropdown-item py-2 text-muted" href="<?php echo e(route('user.logout')); ?>"><h6 class="mb-0"><i class="fas fa-arrow-circle-left font-16 me-2 ms-0 text-primary"></i><?php echo app('translator')->get('messages.logout'); ?></h6></a>
                                 </li>

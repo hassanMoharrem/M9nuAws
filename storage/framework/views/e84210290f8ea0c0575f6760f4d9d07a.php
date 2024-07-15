@@ -61,10 +61,10 @@
             <div class="row">
                 <div class="col-md-12 d-none d-md-block">
                     <ul class="list-unstyled d-flex align-items-center justify-content-center mt-md-4 pb-md-2 mt-4">
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">Home</a></li>
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">Privacy Policy</a></li>
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">Terms and Conditions</a></li>
-                        <li><a href="" class="text-white">Contact Us</a></li>
+                        <li class="me-2 me-sm-4"><a href="" class="text-white"><?php echo app('translator')->get('messages.Home'); ?></a></li>
+                        <li class="me-2 me-sm-4"><a href="" class="text-white"><?php echo app('translator')->get('messages.Privacy Policy'); ?></a></li>
+                        <li class="me-2 me-sm-4"><a href="" class="text-white"><?php echo app('translator')->get('messages.Terms and Conditions'); ?></a></li>
+                        <li><a href="" class="text-white"><?php echo app('translator')->get('messages.Contact Us'); ?></a></li>
                     </ul>
                 </div>
                 <div class="col-md-12 text-center">
@@ -103,7 +103,7 @@
                 <div class="col-12">
                     <div class="background--dark d-md-flex justify-content-between align-items-center">
                         <div class="mt-md-0 mt-4">
-                            <p class="mb-2 text-white text-md-start text-center font-12">©2024 asdasd <span>All rights reserved.</span></p>
+                            <p class="mb-2 text-white text-md-start text-center font-12">©2024 <?php echo e(config('app.name')); ?> <span><?php echo app('translator')->get('messages.All rights reserved.'); ?></span></p>
                         </div>
                         <div class="footer-social d-md-block d-none">
                             <ul class="d-flex align-items-center justify-content-center list-unstyled">

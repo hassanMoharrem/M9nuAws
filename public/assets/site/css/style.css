@@ -686,6 +686,9 @@ textarea {
     /*.align-items-end{*/
     /*    align-items: center !important;*/
     /*}*/
+    .w-60 {
+        width: 57% !important;
+    }
     .font-12-sm{
         font-size: 11px !important;
     }
