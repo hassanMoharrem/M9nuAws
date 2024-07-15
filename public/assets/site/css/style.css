@@ -682,7 +682,7 @@ textarea {
         font-size: 35px;
     }
     .font-45{
-        font-size: 45px;
+        font-size: 45px !important;
     }
     .owl-carousel-slider .owl-nav {
         bottom: 2%;
