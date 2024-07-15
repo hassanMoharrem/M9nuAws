@@ -49,6 +49,7 @@ const lang =
         'visible' :"التفعيل",
         'Active' :"فعّال",
         'inActive' :"غير فعّال",
+        'in Active' :"غير فعّال",
         'Actions' :"التحكم",
         'Menu Page' :"صفحة المنيو",
         'Update' :"تحديث البيانات",

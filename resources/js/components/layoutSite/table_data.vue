@@ -33,13 +33,13 @@
                                     <span v-if="data[index1] === 1"
                                           class="text-success rounded px-1 px-md-2 py-1 border-success border font-10 d-inline-block w-sm-35px text-center">{{ __('Active',this.lang)}}</span>
                                         <span v-if="data[index1] === 0"
-                                              class="text-danger rounded px-1 px-md-2 py-1 border-danger border font-10 d-inline-block w-sm-35px text-center">{{ __('inActive',this.lang)}}</span>
+                                              class="text-danger rounded px-1 px-md-2 py-1 border-danger border font-10 d-inline-block w-sm-35px text-center">{{ __('in Active',this.lang)}}</span>
                                     </p>
                                     <p class="mb-0" v-else-if="index1 === 'status'">
                                     <span v-if="data[index1] === 1"
                                           class="bg-success rounded px-2 py-1 text-white fa-sm">{{ __('Active',this.lang)}}</span>
                                         <span v-if="data[index1] === 0"
-                                              class="bg-danger rounded px-2 py-1 text-white fa-sm">{{ __('inActive',this.lang)}}</span>
+                                              class="bg-danger rounded px-2 py-1 text-white fa-sm">{{ __('in Active',this.lang)}}</span>
                                     </p>
                                     <p class="mb-0 font-12-sm text-truncate w-sm-35px"
                                        v-else-if="index1 !== 'image' && index1 !== 'background' && index1 !=='password'">
