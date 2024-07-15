@@ -18,9 +18,9 @@ class CategoryController extends Controller
 //    }
     public function getAllData($user_id)
     {
-        $data = Category::query()->where('user_id',$user_id)->orderBy('id', 'Asc')->select(['id','name', 'name_ar', 'image','visible'])->simplePaginate(20);
+        $data = Category::query()->where('user_id',$user_id)->orderBy('id', 'Asc')->select(['id','name', 'name_ar','visible'])->simplePaginate(20);
         $data_count = Category::query()->where('user_id',$user_id)->count();
-        $data_header = ['id','name', 'name_ar', 'image','visible']; // Header Table
+        $data_header = ['id','name', 'name_ar','visible']; // Header Table
         return response()->json([
             'data' => $data,
             'data_header' => $data_header,
@@ -33,7 +33,7 @@ class CategoryController extends Controller
         $validator = Validator::make(request()->all(), [
             'name' => 'required|string|min:3|max:200',
             'name_ar' => 'required|string|min:3|max:200',
-            'image' => 'nullable|image',
+//            'image' => 'nullable|image',
             'visible' => 'nullable',
         ]);
         if ($validator->fails()) {
@@ -45,17 +45,17 @@ class CategoryController extends Controller
             return response()->json($response, 400);
         }
         $input = request()->all();
-        if (isset($input['image'])) {
-            $file = $input['image'];
-            $input['image'] = $file->store('images', 'public');
-        }
+//        if (isset($input['image'])) {
+//            $file = $input['image'];
+//            $input['image'] = $file->store('images', 'public');
+//        }
         if ($input['visible'] == true) {
             $input['visible'] = 1 ;
         }else if($input['visible'] === null){
             $input['visible'] = 0 ;
         }
         $input['user_id'] = $input['sub_id'];
-        $desiredOrder = ['id','name', 'name_ar', 'image','visible']; // Same header Table
+        $desiredOrder = ['id','name', 'name_ar','visible']; // Same header Table
         $data = Category::create($input);
         $data_sort = $data->toArray();
         $sortedData = [];
@@ -109,7 +109,7 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3|max:200',
             'name_ar' => 'required|string|min:3|max:200',
-            'image' => 'nullable|image',
+//            'image' => 'nullable|image',
             'visible' => 'nullable',
         ]);
         if ($validator->fails()) {
@@ -122,25 +122,25 @@ class CategoryController extends Controller
         }
 
         $find = Category::class::find($id);
-        $data = $request->except('image');
-        $old_image = false;
+        $data = $request->all();
+//        $old_image = false;
         // Handle image update
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $data['image'] = $file->store('images','public');
-            $old_image = $find->image;
-        }
+//        if($request->hasFile('image')){
+//            $file = $request->file('image');
+//            $data['image'] = $file->store('images','public');
+//            $old_image = $find->image;
+//        }
         if ($request->input('visible') === "true") {
             $data['visible'] = 1 ;
         }else if($request->input('visible') === null){
             $data['visible'] = 0 ;
         }
 
-        if($old_image) {
-            Storage::disk('public')->delete($old_image);
-        }
+//        if($old_image) {
+//            Storage::disk('public')->delete($old_image);
+//        }
         $find->update($data);
-        $desiredOrder = ['id','name', 'name_ar', 'image','visible']; // Same header Table
+        $desiredOrder = ['id','name', 'name_ar','visible']; // Same header Table
         $data_sort = $find->toArray();
         $sortedData = [];
 

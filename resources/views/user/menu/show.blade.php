@@ -71,14 +71,14 @@
                     <div class="footer-social d-md-none d-block">
                         <ul class="d-flex align-items-center justify-content-center list-unstyled">
 
-                            <li class="pb-0 px-2">
+                            <li class="pb-0 px-2 {{ $user->instagram ? '' :'d-none'  }}" >
                                 <a href="{{ $user->instagram }}" target="_blank">
-                                    <i class="fa-brands fa-instagram font-28 text-white"></i>
+                                    <i class="fa-brands fa-instagram font-45 text-white"></i>
                                 </a>
                             </li>
-                            <li class="pb-0 px-2">
+                            <li class="pb-0 px-2 {{ $user->whatsapp ? '' :'d-none'  }}">
                                 <a href="{{ $user->whatsapp }}" target="_blank">
-                                    <i class="fa-brands fa-whatsapp font-28 text-white"></i>
+                                    <i class="fa-brands fa-whatsapp font-45 text-white"></i>
                                 </a>
                             </li>
 
@@ -92,10 +92,10 @@
                 </div>
                 <div class="col-md-12 d-md-none d-block">
                     <ul class="list-unstyled d-flex align-items-center justify-content-center mt-md-4 pb-md-2 mt-4">
-                        <li class="me-3 me-sm-4"><a href="" class="text-white font-12">Home</a></li>
-                        <li class="me-3 me-sm-4"><a href="" class="text-white font-12">Privacy Policy</a></li>
-                        <li class="me-3 me-sm-4"><a href="" class="text-white font-12">Terms and Conditions</a></li>
-                        <li><a href="" class="text-white font-12">Contact Us</a></li>
+                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Home')</a></li>
+                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Privacy Policy')</a></li>
+                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Terms and Conditions')</a></li>
+                        <li><a href="" class="text-white">@lang('messages.Contact Us')</a></li>
                     </ul>
                 </div>
 
@@ -108,12 +108,12 @@
                             <ul class="d-flex align-items-center justify-content-center list-unstyled">
 
                                 <li class="pb-0 px-2">
-                                    <a href="{{ $user->instagram }}" target="_blank">
+                                    <a href="{{ $user->instagram }}" target="_blank" class="{{ $user->instagram ? '' :'d-none'  }}">
                                         <i class="fa-brands fa-instagram font-20 text-white"></i>
                                     </a>
                                 </li>
                                 <li class="pb-0 px-2">
-                                    <a href="{{ $user->whatsapp }}" target="_blank">
+                                    <a href="{{ $user->whatsapp }}" target="_blank" class="{{ $user->whatsapp ? '' :'d-none'  }}">
                                         <i class="fa-brands fa-whatsapp font-20 text-white"></i>
                                     </a>
                                 </li>

@@ -33,7 +33,7 @@ export default {
     data(){
         return{
             category: {
-                'image':'image',
+                // 'image':'image',
                 'name': 'text',
                 'name_ar':'text',
                 'visible':'switch',

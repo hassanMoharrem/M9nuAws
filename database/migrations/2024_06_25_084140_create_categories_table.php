@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('name_ar')->nullable();
             $table->bigInteger('user_id')->nullable();
-            $table->string('image')->nullable();
+//            $table->string('image')->nullable();
             $table->integer('visible');
             $table->timestamps();
             $table->softDeletes();

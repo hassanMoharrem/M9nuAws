@@ -49,7 +49,7 @@ export default {
         return {
             __,
             category: {
-                'image':'image',
+                // 'image':'image',
                 'name': 'text',
                 'name_ar':'text',
                 'visible':'switch',

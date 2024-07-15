@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use HasFactory , SoftDeletes;
-    protected $fillable = ['name','name_ar','user_id','image','visible'];
+    protected $fillable = ['name','name_ar','user_id','visible'];
 
     function getNameLangAttribute()
     {
@@ -19,10 +19,10 @@ class Category extends Model
             return $this->name_ar;
         }
     }
-    public function getImageAttribute($value)
-    {
-        return $value ? url('storage/' . $value) : '';
-    }
+//    public function getImageAttribute($value)
+//    {
+//        return $value ? url('storage/' . $value) : '';
+//    }
     public function products(){
         return $this->hasMany(Product::class);
     }

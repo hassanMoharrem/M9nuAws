@@ -670,7 +670,6 @@ export default {
             axios.post(url, [], config)
                 .then(response => {
                     this.all_data = response.data.data;
-                    console.log(this.all_data);
                     this.header = response.data.data_header;
                     this.loading = false;
                 })
@@ -843,7 +842,7 @@ export default {
         handleDataDeleted(row_index) {
                 this.all_data.data = [];
                 this.loading = true;
-                this.getData(this.all_data.prev_page_url);
+                this.getData(this.all_data.prev_page_url ? this.all_data.prev_page_url :this.dataRequest);
         },
         handleDataCreated(newData) {
             this.all_data.data = [];

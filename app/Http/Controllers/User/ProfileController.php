@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ProfileController extends BaseController
 {
@@ -15,6 +16,7 @@ class ProfileController extends BaseController
     public function index()
     {
         $user = User::query()->where('id',auth()->id())->first();
+
         return view('user.profile',compact('user'));
     }
     public function show()

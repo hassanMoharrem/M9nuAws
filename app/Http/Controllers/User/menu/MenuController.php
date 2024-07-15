@@ -44,12 +44,12 @@ class MenuController extends Controller
         $user_id = \request()->header('_id');
         // Fetch data with the required fields
         $data = Category::query()->where('user_id',$user_id)->orderBy('id', 'DESC')
-            ->select(['id','name','name_ar','image','visible'])
+            ->select(['id','name','name_ar','visible'])
             ->paginate(10);
         // Get the count of users
 
         // Define the headers for the table
-        $data_header = ['id','Name','Name Arabic','Image','Visible'];
+        $data_header = ['id','Name','Name Arabic','Visible'];
 
         // Return the response
         return response()->json([
@@ -115,7 +115,11 @@ class MenuController extends Controller
     public function userIndex()
     {
         $user = User::query()->where('id',auth()->id())->first();
-        return view('user.menu.create',compact('user'));
+        $menuUrl = url('/').'/'.$user->menu_url;
+        // Generate QR Code
+        $qrCode = QrCode::size(200)->generate($menuUrl);
+
+        return view('user.menu.create',compact(['user','qrCode']));
     }
     public function store()
     {
@@ -123,7 +127,7 @@ class MenuController extends Controller
         $validator = Validator::make(request()->all(), [
             'name' => 'required|string|min:3|max:200',
             'name_ar' => 'nullable|string|min:3|max:200',
-            'image' => 'nullable|image',
+//            'image' => 'nullable|image',
             'visible' => 'nullable',
         ]);
         if ($validator->fails()) {
@@ -135,17 +139,17 @@ class MenuController extends Controller
             return response()->json($response, 400);
         }
         $input = request()->all();
-        if (isset($input['image'])) {
-            $file = $input['image'];
-            $input['image'] = $file->store('images', 'public');
-        }
+//        if (isset($input['image'])) {
+//            $file = $input['image'];
+//            $input['image'] = $file->store('images', 'public');
+//        }
         if ($input['visible'] == true) {
             $input['visible'] = 1 ;
         }else if($input['visible'] === null){
             $input['visible'] = 0 ;
         }
         $input['user_id'] = $input['sub_id'];
-        $desiredOrder = ['id','name', 'name_ar', 'image','visible']; // Same header Table
+        $desiredOrder = ['id','name', 'name_ar','visible']; // Same header Table
         $data = Category::create($input);
         $data_sort = $data->toArray();
         $sortedData = [];
@@ -271,7 +275,7 @@ class MenuController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3|max:200',
             'name_ar' => 'nullable|string|min:3|max:200',
-            'image' => 'nullable|image',
+//            'image' => 'nullable|image',
             'visible' => 'nullable',
         ]);
         if ($validator->fails()) {
@@ -284,23 +288,23 @@ class MenuController extends Controller
         }
 
         $find = Category::class::find($id);
-        $data = $request->except('image');
-        $old_image = false;
+        $data = $request->all();
+//        $old_image = false;
         // Handle image update
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $data['image'] = $file->store('images','public');
-            $old_image = $find->image;
-        }
+//        if($request->hasFile('image')){
+//            $file = $request->file('image');
+//            $data['image'] = $file->store('images','public');
+//            $old_image = $find->image;
+//        }
         if ($request->input('visible') === "true") {
             $data['visible'] = 1 ;
         }else if($request->input('visible') === null){
             $data['visible'] = 0 ;
         }
 
-        if($old_image) {
-            Storage::disk('public')->delete($old_image);
-        }
+//        if($old_image) {
+//            Storage::disk('public')->delete($old_image);
+//        }
         $find->update($data);
         $desiredOrder = ['id','name', 'name_ar', 'image','visible']; // Same header Table
         $data_sort = $find->toArray();

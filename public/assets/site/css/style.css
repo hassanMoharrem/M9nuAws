@@ -634,6 +634,9 @@ textarea {
 .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show{
     border-color: transparent !important;
 }
+.min-vh-60{
+    min-height: 60vh;
+}
 @media (min-width: 768px) {
     .w-md-75{
         width: 75% !important;
@@ -677,6 +680,9 @@ textarea {
     }
     .font-40 {
         font-size: 35px;
+    }
+    .font-45{
+        font-size: 45px;
     }
     .owl-carousel-slider .owl-nav {
         bottom: 2%;
