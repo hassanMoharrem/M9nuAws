@@ -43,6 +43,27 @@ Route::prefix('admin')->name('api.admin.')->group(function () {
         Route::post('/update/{id}', [\App\Http\Controllers\Admin\site\StepController::class, 'update'])->name('UpdateStep');
         Route::post('/delete/{id}', [\App\Http\Controllers\Admin\site\StepController::class, 'destroy'])->name('DeleteStep');
     });
+    Route::prefix('condition')->name('condition.')->group(function () {
+        Route::post('/data/condition', [\App\Http\Controllers\Admin\site\ConditionController::class, 'getAllData'])->name('DataCondition');
+        Route::post('/create', [\App\Http\Controllers\Admin\site\ConditionController::class, 'store'])->name('AddCondition');
+        Route::post('/{id}', [\App\Http\Controllers\Admin\site\ConditionController::class, 'show'])->name('ShowCondition');
+        Route::post('/update/{id}', [\App\Http\Controllers\Admin\site\ConditionController::class, 'update'])->name('UpdateCondition');
+        Route::post('/delete/{id}', [\App\Http\Controllers\Admin\site\ConditionController::class, 'destroy'])->name('DeleteCondition');
+    });
+    Route::prefix('privacy')->name('privacy.')->group(function () {
+        Route::post('/data/privacy', [\App\Http\Controllers\Admin\site\PrivacyController::class, 'getAllData'])->name('DataPrivacy');
+        Route::post('/create', [\App\Http\Controllers\Admin\site\PrivacyController::class, 'store'])->name('AddPrivacy');
+        Route::post('/{id}', [\App\Http\Controllers\Admin\site\PrivacyController::class, 'show'])->name('ShowPrivacy');
+        Route::post('/update/{id}', [\App\Http\Controllers\Admin\site\PrivacyController::class, 'update'])->name('UpdatePrivacy');
+        Route::post('/delete/{id}', [\App\Http\Controllers\Admin\site\PrivacyController::class, 'destroy'])->name('DeletePrivacy');
+    });
+    Route::prefix('social')->name('social.')->group(function () {
+        Route::post('/data/social', [\App\Http\Controllers\Admin\site\SocialController::class, 'getAllData'])->name('DataSocial');
+        Route::post('/create', [\App\Http\Controllers\Admin\site\SocialController::class, 'store'])->name('AddSocial');
+        Route::post('/{id}', [\App\Http\Controllers\Admin\site\SocialController::class, 'show'])->name('ShowSocial');
+        Route::post('/update/{id}', [\App\Http\Controllers\Admin\site\SocialController::class, 'update'])->name('UpdateSocial');
+        Route::post('/delete/{id}', [\App\Http\Controllers\Admin\site\SocialController::class, 'destroy'])->name('DeleteSocial');
+    });
     Route::prefix('advantage')->name('advantage.')->group(function () {
         Route::post('/data/advantage', [\App\Http\Controllers\Admin\site\AdvantageController::class, 'getAllData'])->name('DataAdvantage');
         Route::post('/create', [\App\Http\Controllers\Admin\site\AdvantageController::class, 'store'])->name('AddAdvantage');

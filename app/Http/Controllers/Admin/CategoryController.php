@@ -32,7 +32,7 @@ class CategoryController extends Controller
         $lang = request()->header('Accept-Language') ?? 'en';
         $validator = Validator::make(request()->all(), [
             'name' => 'required|string|min:3|max:200',
-            'name_ar' => 'required|string|min:3|max:200',
+            'name_ar' => 'nullable|string|min:3|max:200',
 //            'image' => 'nullable|image',
             'visible' => 'nullable',
         ]);
@@ -108,7 +108,7 @@ class CategoryController extends Controller
         $lang = request()->header('Accept-Language') ?? 'en';
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3|max:200',
-            'name_ar' => 'required|string|min:3|max:200',
+            'name_ar' => 'nullable|string|min:3|max:200',
 //            'image' => 'nullable|image',
             'visible' => 'nullable',
         ]);

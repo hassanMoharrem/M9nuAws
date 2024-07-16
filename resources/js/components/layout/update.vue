@@ -35,6 +35,14 @@
                                                class="form-control" :placeholder="__(index, this.lang)">
                                         <span v-if="flashMsg[index]" class="text-danger font-12 fw-400">{{ flashMsg[index][0] }}</span>
                                     </div>
+                                <div v-else-if="row ==='ck_text'" class="col-12 mb-2 text-start">
+                                    <div>
+                                        <label class="form-label">{{__(index, this.lang)}}</label>
+                                        <ckeditor :editor="editor" v-model="form_update[index]" :config="editorConfig"></ckeditor>
+                                        <span v-if="flashMsg[index]" class="text-danger font-12 fw-400">{{ flashMsg[index][0] }}</span>
+                                    </div>
+
+                                </div>
                                     <div v-else-if="row ==='email'" class="col-6 mb-2 text-start">
                                         <label class="form-label">{{__(index,this.lang)}}</label>
                                         <input type="email" v-model="form_update[index]"
@@ -113,6 +121,12 @@ export default{
                 successMsg: '',
                 key_index: null,
                 indexImageInput: '',
+                editor: ClassicEditor,
+                editorData: '<p></p>',
+                editorConfig: {
+
+                }
+
             }
         },
         methods:{

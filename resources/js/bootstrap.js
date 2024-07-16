@@ -7,7 +7,10 @@ import 'bootstrap';
  */
 
 import axios from 'axios';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 window.axios = axios;
+window.ClassicEditor = ClassicEditor;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

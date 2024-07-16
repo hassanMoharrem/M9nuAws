@@ -13,7 +13,7 @@
                     <form @submit.prevent="AddData" enctype="multipart/form-data">
                         <div class="row">
                             <template v-for="(row,index) in data " class="mb-3">
-                                <div class="col-12"  v-if="row ==='image'">
+                                    <div class="col-12"  v-if="row ==='image'">
                                     <div class="row justify-content-center">
                                         <div class="col-6 text-center">
                                             <div :id="'file-upload-filename'+index"
@@ -32,7 +32,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                     <div v-else-if="row ==='text'" class="col-6 mb-2 text-start">
                                         <div v-if="index === 'menu_url'">
                                             <label class="form-label">{{__(index, this.lang)}}</label>
@@ -49,6 +48,14 @@
                                             <label class="form-label">{{__(index, this.lang)}}</label>
                                             <input type="text" v-model="form[index]"
                                                    class="form-control" :placeholder="__(index, this.lang)">
+                                            <span v-if="flashMsg[index]" class="text-danger font-12 fw-400">{{ flashMsg[index][0] }}</span>
+                                        </div>
+
+                                    </div>
+                                    <div v-else-if="row ==='ck_text'" class="col-12 mb-2 text-start">
+                                        <div>
+                                            <label class="form-label">{{__(index, this.lang)}}</label>
+                                            <ckeditor :editor="editor" v-model="form[index]" :config="editorConfig"></ckeditor>
                                             <span v-if="flashMsg[index]" class="text-danger font-12 fw-400">{{ flashMsg[index][0] }}</span>
                                         </div>
 
@@ -71,7 +78,7 @@
                                                class="form-control" :placeholder="__(index, this.lang)">
                                         <span v-if="flashMsg[index]" class="text-danger font-12 fw-400">{{ flashMsg[index][0] }}</span>
                                     </div>
-                                <div v-else-if="row ==='date'" class="col-6 mb-2 text-start">
+                                    <div v-else-if="row ==='date'" class="col-6 mb-2 text-start">
                                     <label class="form-label">{{__(index, this.lang)}}</label>
                                     <input type="date" v-model="form[index]"
                                            class="form-control" :placeholder="__(index, this.lang)">
@@ -107,7 +114,6 @@
 
 <script>
     import AlertMessage from "./alertMessage.vue";
-
     export default{
         components: {AlertMessage},
         props:[
@@ -132,7 +138,11 @@
                 flashMsg: [],
                 successMsg: '',
                 indexImageInput: '',
+                editor: ClassicEditor,
+                editorData: '<p></p>',
+                editorConfig: {
 
+                }
             }
         },
         methods:{

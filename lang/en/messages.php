@@ -31,6 +31,8 @@
         'Email' =>"Email",
         'Your logo' =>"Your logo",
         'f_name' =>"first name",
+        'Conditions' =>"Conditions",
+        'Social' =>"Social",
         'I forgot my password' =>"I forgot my password",
         'Sign in to start your session' =>"Sign in to start your session",
         'In three simple steps, you will have the quickest,easiest, and most cost- effective solution' =>"In three simple steps, you will have the quickest,easiest, and most cost- effective solution",

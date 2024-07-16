@@ -34,12 +34,12 @@
 
 </head>
 <body>
-<header id="main-header" class="w-100 <?php echo e(request()->is('user/profile') || request()->is('user/menu') || request()->routeIs('menu') ? 'position-relative bg-white shadow-sm' :'position-absolute z-index-999'); ?>">
+<header id="main-header" class="w-100 <?php echo e(request()->is('user/profile') || request()->is('user/menu') || request()->routeIs('condition.index') || request()->routeIs('privacy.index') || request()->routeIs('menu') ? 'position-relative bg-white shadow-sm' :'position-absolute z-index-999'); ?>">
 <div class="container">
     <div class="row">
         <div class="col-3 my-auto">
             <a href="<?php echo e(route('site')); ?>" class="d-inline-block py-2 py-md-4">
-                    <img src="<?php echo e(asset('assets/site/images/logo.png')); ?>" width="100" height="<?php echo e(request()->is('user/profile') || request()->is('user/menu')|| request()->routeIs('menu') ? '30':'60'); ?>" class="contain logo-image" alt="">
+                    <img src="<?php echo e(asset('assets/site/images/logo.png')); ?>" width="100" height="<?php echo e(request()->is('user/profile') || request()->is('user/menu')|| request()->routeIs('condition.index') || request()->routeIs('privacy.index') || request()->routeIs('menu') ? '30':'60'); ?>" class="contain logo-image" alt="">
 
 
             </a>
@@ -50,7 +50,7 @@
                     <?php if(Auth::check()): ?>
                         <div class="nav-link dropdown lang">
                             <a class="btn text-white-muted p-0 m-0 bg-none rounded-10 dropdown-toggle dropdown-toggleUser align-middle" href="#" role="button" id="dropdownMenuLinkUser" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<?php echo e(asset('assets/site/images/user.png')); ?>" width="35" height="35" class="object-fit-contain rounded-circle border" alt=""><span class="ms-2  <?php echo e(request()->is('user/profile') || request()->is('user/menu')|| request()->routeIs('menu') ? 'text-primary':'text-truncate'); ?> d-inline-block align-middle my-auto" style="max-width: 100px"><?php echo e(app()->getLocale() == 'en' ? Auth::user()->f_name : Auth::user()->f_name_ar); ?></span>
+                                <img src="<?php echo e(asset('assets/site/images/user.png')); ?>" width="35" height="35" class="object-fit-contain rounded-circle border" alt=""><span class="ms-2  <?php echo e(request()->is('user/profile') || request()->is('user/menu')|| request()->routeIs('menu') || request()->routeIs('condition.index') || request()->routeIs('privacy.index') ? 'text-primary':'text-truncate'); ?> d-inline-block align-middle my-auto" style="max-width: 100px"><?php echo e(app()->getLocale() == 'en' ? Auth::user()->f_name : Auth::user()->f_name_ar); ?></span>
                             </a>
                             <ul class="dropdown-menu border-0 shadow fade text-start" aria-labelledby="dropdownMenuLinkUser">
                                 <li class="px-2 pt-2 pb-2 border-bottom text-muted"><a class="dropdown-item text-muted" href="<?php echo e(route('user.profile.index')); ?>"><h6 class="p-2 bg-primary rounded-circle me-2 d-inline-block"><i class="fas fa-user p-1 text-white"></i></h6><?php echo app('translator')->get('messages.My Profile'); ?></a></li>
@@ -64,19 +64,19 @@
                     <?php else: ?>
                         <a class="font-18 text-dark" href="<?php echo e(route('user.login')); ?>">
                             <i class="fa-regular fa-user align-middle text-primary font-16"></i><span
-                                class="align-middle font-16 ms-2 <?php echo e(request()->routeIs('menu') ? 'text-primary' : 'text-white-muted'); ?>"><?php echo app('translator')->get('messages.Sign In'); ?></span>
+                                class="align-middle font-16 ms-2 <?php echo e(request()->routeIs('menu') || request()->routeIs('condition.index')|| request()->routeIs('privacy.index') ? 'text-primary' : 'text-white-muted'); ?>"><?php echo app('translator')->get('messages.Sign In'); ?></span>
                         </a>
                     <?php endif; ?>
                 </li>
                 <li class="d-inline-block ps-md-2 ps-2">
                     <?php if(app()->getLocale() == 'ar'): ?>
                         <a class="dropdown-item change-lang rounded-2" href="javascript:void(0)" data-language="en">
-                            <h4 class="mb-0 font-14 rounded-2 p-2 <?php echo e(request()->is('user/profile') || request()->is('user/menu') || request()->routeIs('menu') ? 'bg-primary text-white' : 'bg-white text-primary'); ?>">EN</h4>
+                            <h4 class="mb-0 font-14 rounded-2 p-2 <?php echo e(request()->is('user/profile') || request()->is('user/menu') || request()->routeIs('condition.index') || request()->routeIs('privacy.index') || request()->routeIs('menu') ? 'bg-primary text-white' : 'bg-white text-primary'); ?>">EN</h4>
                             <span class="align-middle"></span>
                         </a>
                     <?php else: ?>
                         <a class="dropdown-item change-lang rounded-2" href="javascript:void(0)" data-language="ar">
-                            <h4 class="mb-0 font-14 rounded-2 p-2 <?php echo e(request()->is('user/profile') || request()->is('user/menu') || request()->routeIs('menu') ? 'bg-primary text-white' : 'bg-white text-primary'); ?>">AR</h4>
+                            <h4 class="mb-0 font-14 rounded-2 p-2 <?php echo e(request()->is('user/profile') || request()->is('user/menu') || request()->routeIs('condition.index') || request()->routeIs('privacy.index') ||request()->routeIs('menu') ? 'bg-primary text-white' : 'bg-white text-primary'); ?>">AR</h4>
                             <span class="align-middle"></span>
                         </a>
                     <?php endif; ?>

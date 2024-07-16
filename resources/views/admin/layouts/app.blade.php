@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
-    <title>Dashboard m9nuAws</title>
+    <title>{{ config('app.name') }}</title>
     <meta name="description"
           content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!"/>
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
@@ -165,6 +165,24 @@
                     <a href="{{ route('admin.advantage') }}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-archive"></i>
                         <div>@lang('messages.Advantages')</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('admin/condition') ? 'active' : '' }}">
+                    <a href="{{ route('admin.condition') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-note"></i>
+                        <div>@lang('messages.Conditions')</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('admin/privacy') ? 'active' : '' }}">
+                    <a href="{{ route('admin.privacy') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-note"></i>
+                        <div>@lang('messages.Privacy Policy')</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('admin/social') ? 'active' : '' }}">
+                    <a href="{{ route('admin.social') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-note"></i>
+                        <div>@lang('messages.Social')</div>
                     </a>
                 </li>
 

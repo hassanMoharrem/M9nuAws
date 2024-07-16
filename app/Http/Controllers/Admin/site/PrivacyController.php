@@ -1,26 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\site;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\Privacy;
+use App\Models\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 
-class ProductController extends Controller
+class PrivacyController extends Controller
 {
-//    public function index()
-//    {
-//        $product = Product::query()->get();
-//        return view('admin.site.product',compact('product'));
-//    }
-    public function getAllData($category_id)
+
+    public function indexNew()
     {
-        $data = Product::query()->where('category_id',$category_id)->orderBy('id', 'Asc')->select(['id','name', 'name_ar','description', 'description_ar','price', 'image','visible'])->simplePaginate(20);
-        $data_count = Product::query()->where('category_id',$category_id)->count();
-        $data_header = ['id','name', 'name_ar','description', 'description_ar','price', 'image','visible']; // Header Table
+        $privacy = Privacy::query()->where('visible',1)->pluck('description')->first();
+        $social = Social::query()->where('visible',1)->orderBy('id','Desc')->limit(2)->get();
+        return view('user.privacy',compact(['privacy','social']));
+    }
+    public function index()
+    {
+        $privacy = Privacy::query()->get();
+        return view('admin.site.privacy',compact('privacy'));
+    }
+    public function getAllData()
+    {
+        $data = Privacy::query()->orderBy('id', 'Asc')->select(['id','description','visible'])->simplePaginate(20);
+        $data_count = Privacy::query()->count();
+        $data_header = ['id','description','visible']; // Header Table
         return response()->json([
             'data' => $data,
             'data_header' => $data_header,
@@ -31,12 +39,7 @@ class ProductController extends Controller
     {
         $lang = request()->header('Accept-Language') ?? 'en';
         $validator = Validator::make(request()->all(), [
-            'name' => 'required|string|min:3|max:200',
-            'name_ar' => 'nullable|string|min:3|max:200',
-            'description' => 'nullable',
-            'description_ar' => 'nullable',
-            'price' => 'required|numeric',
-            'image' => 'nullable|image',
+            'description' => 'required|string|min:3',
             'visible' => 'nullable',
         ]);
         if ($validator->fails()) {
@@ -48,18 +51,13 @@ class ProductController extends Controller
             return response()->json($response, 400);
         }
         $input = request()->all();
-        if (isset($input['image'])) {
-            $file = $input['image'];
-            $input['image'] = $file->store('images', 'public');
-        }
         if ($input['visible'] == true) {
             $input['visible'] = 1 ;
         }else if($input['visible'] === null){
             $input['visible'] = 0 ;
         }
-        $input['category_id'] = $input['sub_id'];
-        $desiredOrder = ['id','name', 'name_ar','description', 'description_ar','price', 'image','visible']; // Same header Table
-        $data = Product::create($input);
+        $desiredOrder = ['id','description','visible']; // Same header Table
+        $data = Privacy::create($input);
         $data_sort = $data->toArray();
         $sortedData = [];
 
@@ -68,7 +66,7 @@ class ProductController extends Controller
                 $sortedData[$key] = $data_sort[$key];  // sort to pass same order data
             }
         }
-        $data_count = Product::query()->count();
+        $data_count = Privacy::query()->count();
 
         return response()->json([
             'status' => 200,
@@ -81,14 +79,14 @@ class ProductController extends Controller
     public function show($id)
     {
         $lang = request()->header('Accept-Language') ?? 'en';
-        $product = Product::find($id);
+        $privacy = Privacy::find($id);
 
-        if (!$product) {
-            return response()->json(['message' => 'Product not found'], 404);
+        if (!$privacy) {
+            return response()->json(['message' => 'Privacy not found'], 404);
         }
 
         // Transform the data to convert numeric values to boolean for checkbox fields
-        $data = $product->toArray();
+        $data = $privacy->toArray();
 
         // Assuming 'visible' is the checkbox field
         $checkboxFields = ['visible'];
@@ -103,14 +101,10 @@ class ProductController extends Controller
     }
     public function update(Request $request ,$id){
         $lang = request()->header('Accept-Language') ?? 'en';
-        $validator = Validator::make(request()->all(), [
-            'name' => 'required|string|min:3|max:200',
-            'name_ar' => 'nullable|string|min:3|max:200',
-            'description' => 'nullable',
-            'description_ar' => 'nullable',
-            'price' => 'required|numeric',
-            'image' => 'nullable|image',
+        $validator = Validator::make($request->all(), [
+            'description' => 'nullable|string|min:3',
             'visible' => 'nullable',
+//            'background' => 'nullable|image'
         ]);
         if ($validator->fails()) {
             $response = [
@@ -121,26 +115,16 @@ class ProductController extends Controller
             return response()->json($response, 400);
         }
 
-        $find = Product::class::find($id);
-        $data = $request->except('image');
-        $old_image = false;
+        $find = Privacy::class::find($id);
+        $data = $request->all();
         // Handle image update
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $data['image'] = $file->store('images','public');
-            $old_image = $find->image;
-        }
         if ($request->input('visible') === "true") {
             $data['visible'] = 1 ;
         }else if($request->input('visible') === null){
             $data['visible'] = 0 ;
         }
-
-        if($old_image) {
-            Storage::disk('public')->delete($old_image);
-        }
         $find->update($data);
-        $desiredOrder = ['id','name', 'name_ar','description', 'description_ar','price', 'image','visible']; // Same header Table
+        $desiredOrder = ['id','description','visible']; // Same header Table
         $data_sort = $find->toArray();
         $sortedData = [];
 
@@ -160,7 +144,7 @@ class ProductController extends Controller
     {
         $lang = request()->header('Accept-Language') ?? 'en';
         try {
-            $find = Product::find($id);
+            $find = Privacy::find($id);
             $find->delete();
             return response()->json([
                 'status' => 200,

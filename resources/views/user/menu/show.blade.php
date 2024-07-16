@@ -62,9 +62,8 @@
                 <div class="col-md-12 d-none d-md-block">
                     <ul class="list-unstyled d-flex align-items-center justify-content-center mt-md-4 pb-md-2 mt-4">
                         <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Home')</a></li>
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Privacy Policy')</a></li>
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Terms and Conditions')</a></li>
-                        <li><a href="" class="text-white">@lang('messages.Contact Us')</a></li>
+                        <li class="me-2 me-sm-4"><a href="{{ route('privacy.index') }}" class="text-white">@lang('messages.Privacy Policy')</a></li>
+                        <li class="me-2 me-sm-4"><a href="{{ route('condition.index') }}" class="text-white">@lang('messages.Terms and Conditions')</a></li>
                     </ul>
                 </div>
                 <div class="col-md-12 text-center">
@@ -93,9 +92,8 @@
                 <div class="col-md-12 d-md-none d-block">
                     <ul class="list-unstyled d-flex align-items-center justify-content-center mt-md-4 pb-md-2 mt-4">
                         <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Home')</a></li>
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Privacy Policy')</a></li>
-                        <li class="me-2 me-sm-4"><a href="" class="text-white">@lang('messages.Terms and Conditions')</a></li>
-                        <li><a href="" class="text-white">@lang('messages.Contact Us')</a></li>
+                        <li class="me-2 me-sm-4"><a href="{{ route('privacy.index') }}" class="text-white">@lang('messages.Privacy Policy')</a></li>
+                        <li class="me-2 me-sm-4"><a href={{ route('condition.index') }}"" class="text-white">@lang('messages.Terms and Conditions')</a></li>
                     </ul>
                 </div>
 

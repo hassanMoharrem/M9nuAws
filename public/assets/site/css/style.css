@@ -637,6 +637,9 @@ textarea {
 .min-vh-60{
     min-height: 60vh;
 }
+.min-vh-100-edit{
+    min-height: calc(100vh - 226px);
+}
 @media (min-width: 768px) {
     .w-md-75{
         width: 75% !important;

@@ -21,6 +21,7 @@
                         <span v-if="data[index1] === 1" class="bg-success rounded px-3 py-1 text-white fa-sm">Active</span>
                         <span v-if="data[index1] === 0" class="bg-danger rounded px-3 py-1 text-white fa-sm">inActive</span>
                     </p>
+                    <p class="mb-0" v-else-if="this.ck_text && index1 === 'description'" v-html="data[index1] ? truncateText(data[index1]) : '-'"></p>
                     <p class="mb-0" v-else-if="index1 !== 'image' && index1 !== 'background' && index1 !=='password'">{{ data[index1] ? truncateText(data[index1]) : __('Null',this.lang) }}</p>
                     <p class="mb-0" v-else-if="index1 ==='password'">تم إخفاؤها</p>
                     <img width="40" class="rounded-1 object-fit-contain" v-else-if="index1 ==='image'" :src="data[index1] ? data[index1] : '../assets/images/logo.png'" alt="">
@@ -69,6 +70,7 @@ export default {
         '__',
         'initial_data',
         'sub_id',
+        'ck_text',
     ],
     data() {
         return {

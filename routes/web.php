@@ -9,6 +9,8 @@ Route::post('locale',[\App\Http\Controllers\LanguageController::class,'switch'])
 
 Route::get('/',[\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('site');
 Route::get('/{name}',[\App\Http\Controllers\User\menu\MenuController::class, 'index'])->name('menu');
+Route::get('/condition/show', [\App\Http\Controllers\Admin\site\ConditionController::class, 'indexNew'])->name('condition.index');
+Route::get('/privacy/show', [\App\Http\Controllers\Admin\site\PrivacyController::class, 'indexNew'])->name('privacy.index');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [\App\Http\Controllers\Admin\Auth\AuthController::class, 'loginIndex'])->name('login.index');
@@ -25,7 +27,10 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/category/show/{id}',[\App\Http\Controllers\Admin\CategoryController::class, 'showCategory'])->name('category.show');
     Route::get('/slider',[\App\Http\Controllers\Admin\site\SliderController::class, 'index'])->name('slider');
     Route::get('/step',[\App\Http\Controllers\Admin\site\StepController::class, 'index'])->name('step');
+    Route::get('/condition',[\App\Http\Controllers\Admin\site\ConditionController::class, 'index'])->name('condition');
+    Route::get('/privacy',[\App\Http\Controllers\Admin\site\PrivacyController::class, 'index'])->name('privacy');
     Route::get('/advantage',[\App\Http\Controllers\Admin\site\AdvantageController::class, 'index'])->name('advantage');
+    Route::get('/social',[\App\Http\Controllers\Admin\site\SocialController::class, 'index'])->name('social');
     Route::get('/logout', [\App\Http\Controllers\Admin\Auth\AuthController::class, 'logout'])->name('logout');
 });
 
